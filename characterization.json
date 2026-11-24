@@ -1,0 +1,26 @@
+{
+  "task": "literature-structured-notes",
+  "challenge_id": "product-arena-06-6d8cf72b",
+  "approach": "Evidence-anchored structured literature note Skill. A deterministic PyMuPDF layout parser (page/bbox/section/table/figure/formula provenance) supplies the evidence layer; the Skill then guides the agent to reproduce the paper's own section order (对得上), fill a uniform paper card including method conditions and premises (留得住), anchor every claim to page/section/figure/table (找得回), and emit a fixed machine-readable schema with normalised terminology (用得上). A companion verifier mechanically checks required fields, section/summary 1:1 alignment, claim anchoring, and anchor resolution against parsed.json.",
+  "methods": [
+    "layout-aware PDF parsing with page/bbox provenance",
+    "section-map reconstruction from the paper's own headings",
+    "uniform paper-card field extraction (research question / data / methods / conditions / findings / limitations)",
+    "per-claim confidence marking (reported / inferred / unreported / conflict)",
+    "chapter-aligned summaries with cross-section links",
+    "knowledge-point extraction with terminology normalisation",
+    "deterministic anchor verification (page/section/figure/table/formula resolution)"
+  ],
+  "dependencies": ["PyMuPDF>=1.24.0"],
+  "input": "a research paper PDF plus /input/case.json and /input/task.md",
+  "output": "result.json (output_contract fields + case_id + reading_result + evidence_boundary + status + change_records), note.md (human-readable), parsed.json/parsed.md (evidence layer)",
+  "scope": "single- and two-column scientific PDFs with a text layer, in any language the agent can read",
+  "limitations": [
+    "exotic layouts may need manual review",
+    "borderless tables are best-effort",
+    "formulas preserve the text layer and flag math spans; no LaTeX reconstruction from images",
+    "scanned PDFs (no text layer) are flagged for OCR, not OCR'd by the parser itself",
+    "the verifier checks structure and anchors, not semantic correctness; the agent must read the actual paper"
+  ],
+  "honest_status": "Self-tested scripts (parse_pdf.py + verify_notes.py) on local sample PDFs and on synthetic note JSON; a full end-to-end note generation run requires the evaluation platform's fixed cases, which are not included here."
+}
