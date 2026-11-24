@@ -1,0 +1,11 @@
+{
+  "pages": 15,
+  "blocks": 540,
+  "sections": 30,
+  "tables": 4,
+  "figures": 3,
+  "formulas": 3,
+  "uncertainties": 0,
+  "input": "arXiv:1706.03762 (Attention Is All You Need)",
+  "note": "parser stdout summary; the full parsed.json/parsed.md evidence layer was produced but is omitted from the bundle to stay lean"
+}
