@@ -1,0 +1,32 @@
+{
+  "case_id": "smoke",
+  "reading_result": {
+    "schema": "literature-structured-note/1",
+    "paper": {"title": "Attention Is All You Need", "source": "attention.pdf", "pages": 15, "language": "en"},
+    "section_map": [
+      {"section_id": "s1", "level": 1, "title": "Introduction", "page_start": 1, "page_end": 2},
+      {"section_id": "s2", "level": 1, "title": "Background", "page_start": 2, "page_end": 4},
+      {"section_id": "s3", "level": 1, "title": "Model Architecture", "page_start": 4, "page_end": 7}
+    ],
+    "paper_card": {
+      "research_question": {"text": "Can a model rely entirely on attention without recurrence?", "anchor": "p1 s1", "confidence": "reported"},
+      "objectives": [{"text": "Propose the Transformer.", "anchor": "p1", "confidence": "reported"}],
+      "data": {"text": "WMT 2014 English-German and English-French datasets.", "anchor": "p5 s3", "confidence": "reported"},
+      "methods": [{"text": "Multi-head self-attention and position-wise feed-forward networks.", "anchor": "p4", "confidence": "reported"}],
+      "conditions": [{"text": "Trained on 8 P100 GPUs for 12 hours (base).", "anchor": "p7", "confidence": "reported"}],
+      "main_findings": [{"text": "28.4 BLEU on WMT 2014 En-De.", "anchor": "p9", "confidence": "reported"}],
+      "limitations": [{"text": "Positional encoding is fixed-length.", "anchor": "p6", "confidence": "reported"}]
+    },
+    "chapter_summaries": [
+      {"section_id": "s1", "title": "Introduction", "purpose": {"text": "Motivate attention.", "anchor": "p1"}, "links_to": ["s2"]},
+      {"section_id": "s2", "title": "Background", "purpose": {"text": "Review attention.", "anchor": "p2"}, "links_to": ["s3"]}
+    ],
+    "knowledge_points": [
+      {"id": "kp1", "type": "concept", "term": "Scaled Dot-Product Attention", "definition": "Attention = softmax(QK^T/sqrt(d_k))V.", "anchor": "p3"},
+      {"id": "kp1", "type": "concept", "term": "Multi-Head Attention", "definition": "Parallel attention heads.", "anchor": "p4"}
+    ],
+    "terminology": []
+  },
+  "evidence_boundary": {"sources": ["attention.pdf"], "uncertainty": [], "anchors": []},
+  "status": "ok"
+}
