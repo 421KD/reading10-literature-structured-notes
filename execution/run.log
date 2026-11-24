@@ -1,0 +1,23 @@
+# Execution log — literature-structured-notes self-test
+date: 2026-11-24
+python: 3.12.14
+dependency: PyMuPDF 2.1
+
+## Test 1 — layout parser on a real paper
+input: arXiv:1706.03762 (Attention Is All You Need), 15 pages
+command: python src/parse_pdf.py test/attention.pdf execution/smoke/parsed
+result: 540 blocks, 30 sections, 4 tables, 3 figures, 3 formulas, 0 uncertainties
+evidence: parser prints the JSON summary; parsed.json/parsed.md hold the evidence layer
+
+## Test 2 — note verifier (edge cases)
+command: python src/verify_notes.py execution/smoke/note.json execution/smoke/parsed/parsed.json execution/smoke/verify
+result: the verifier correctly flags a synthetic note's duplicate knowledge-point id
+        (['kp1']) and a section missing its chapter summary (['s3']); all 11 claims'
+        anchors resolve to real pages/sections/figures.
+edge cases (separate run): page-out-of-range (p99), unknown figure id (fig99_0), and
+        a 'reported'-confidence claim with no anchor are all flagged.
+
+## Note
+Both self-tests use a public paper and synthetic note JSON. The three official fixed
+cases are supplied only by the evaluation platform and are NOT included in this bundle;
+no formal test outputs or prepared answers are submitted.
